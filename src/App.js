@@ -52,9 +52,9 @@ class Color extends Component {
             }
 
             changeColor() {
-              if(this.state.currentColor == this.state.colorBlack) {
+              if(this.state.currentColor === this.state.colorBlack) {
                 this.setState({
-                currentColor: this.state.color1[0]
+                currentColor: this.state.color1
                 });
               } else {
                 this.setState({
@@ -79,14 +79,13 @@ class Color extends Component {
             render() {
               return(
                 <div>
+                {console.log(this.state.color1)}
                   <button onClick={this.changeColor}>Click me</button><br/>
                   <span className="dot" style={{backgroundColor: '#' + this.state.currentColor}}></span><br/>
                   <input 
                     value={this.props.input}
                     onChange={this.props.handleChange}
                   />
-                  <p>{this.state.color1}</p>
-                  <p>{this.state.color2}</p>
                 </div>
                 )
             }

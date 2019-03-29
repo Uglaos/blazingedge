@@ -46,6 +46,20 @@ class Color extends Component {
                 color1: [],
                 color2: [],
                 colorBlack: "#000000",
+                currentColor: ""
+              }
+              this.changeColor = this.changeColor.bind(this);
+            }
+
+            changeColor() {
+              if(this.state.currentColor == this.state.colorBlack) {
+                this.setState({
+                currentColor: this.state.color1
+                });
+              } else {
+                this.setState({
+                currentColor: this.state.colorBlack
+                });
               }
             }
 
@@ -61,10 +75,12 @@ class Color extends Component {
                       }, 2500);
                 }
 
+
             render() {
               return(
                 <div>
-                  <button>Click me</button><br/>
+                  <button onClick={this.changeColor}>Click me</button><br/>
+                  <span className="dot" style={{backgroundColor: this.state.currentColor}}></span><br/>
                   <input 
                     value={this.props.input}
                     onChange={this.props.handleChange}

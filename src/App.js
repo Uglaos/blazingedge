@@ -8,9 +8,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+          <Color />
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -24,5 +22,24 @@ class App extends Component {
     );
   }
 }
+
+
+class Color extends Component {
+            constructor(props) {
+              super(props);
+
+              this.state = {
+                color1: null,
+                color2: null,
+                colorBlack: "#000000"
+              }
+            }
+
+            render() {
+              return(
+                
+                )
+            }
+          }
 
 export default App;

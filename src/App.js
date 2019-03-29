@@ -7,16 +7,22 @@ class App extends Component {
               super(props);
 
               this.state = {
-                input: ''
+                inputValue: ''
               }
+              this.handleChange = this.handleChange.bind(this);
             }
+  handleChange(event) {
+    this.setState({
+      inputValue: event.target.value
+    });
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Color />
-          <p>{this.props.color1}</p>
+          <p>{this.state.inputValue}</p>
+          <Color input={this.state.inputValue} handleChange={this.handleChange}/>
           <a
             className="App-link"
             href="https://reactjs.org"
@@ -40,7 +46,6 @@ class Color extends Component {
                 color1: [],
                 color2: [],
                 colorBlack: "#000000",
-                input: ''
               }
             }
 
@@ -56,17 +61,14 @@ class Color extends Component {
                       }, 2500);
                 }
 
-            handleChange(event) {
-              this.setState({
-              input: event.target.value
-                });
-            }
-
             render() {
               return(
                 <div>
                   <button>Click me</button><br/>
-                  <input value = {this.state.input} onChange = {this.handleChange.bind(this)}/>
+                  <input 
+                    value={this.props.input}
+                    onChange={this.props.handleChange}
+                  />
                   <p>{this.state.color1}</p>
                   <p>{this.state.color2}</p>
                 </div>

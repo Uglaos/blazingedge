@@ -29,15 +29,29 @@ class Color extends Component {
               super(props);
 
               this.state = {
-                color1: null,
-                color2: null,
+                color1: [],
+                color2: [],
                 colorBlack: "#000000"
               }
             }
 
+            componentDidMount() {
+              fetch('http://www.colr.org/json/color/random')
+              .then(response => response.json())
+              .then(data => this.setState({ color1: data.colors[0].hex }));
+              setTimeout( () => {
+                fetch('http://www.colr.org/json/color/random')
+                .then(response => response.json())
+                .then(data => this.setState({ color2: data.colors[0].hex }));
+                      }, 2500);
+          }
+
             render() {
               return(
-                
+                <div>
+                  <p>{this.state.color1}</p>
+                  <p>{this.state.color2}</p>
+                </div>
                 )
             }
           }
